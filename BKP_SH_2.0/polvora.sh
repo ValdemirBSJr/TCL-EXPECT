@@ -2,8 +2,8 @@
 
 #Desenvolvido por valdemir Bezerra de S. Junior - N5669203 para rodar comandos em equipamentos de forma desacoplada
 #Script recebe o ip e comandos e tenta logar e rodar os comandos
-#Datacenter NET Jo„o Pessoa
-#Vers„o 1.0
+#Datacenter NET Jo√£o Pessoa
+#Vers√£o 1.0
 
 ############ VARIAVEIS ##############################################################
 
@@ -11,8 +11,8 @@
 set prompt "(%|>|#|\\\$) $"          ;# aguarda retorno de prompt padrao
     catch {set prompt $env(EXPECT_PROMPT)}
     
-#Coloque o seu N na vari·vel abaixo
-set loginUsuario "N5669203" 
+#Coloque o seu N na vari√°vel abaixo
+set loginUsuario "ID" 
 
 #set senhaREAD [open "/home/Documents/partida.txt"]
 set senha [exec openssl enc -d -aes-256-cbc -in /home/Documents/partida_encrypted.txt -pass pass:81b95d53d1f1f749b2e7bc561dc19830fb224f04 -md sha256 2>/dev/null]
@@ -61,14 +61,14 @@ expect {
 
 
 
-#cada status recebe um numero. se for 0 foi OK sen„o o python vai informar na mensagem
+#cada status recebe um numero. se for 0 foi OK sen√£o o python vai informar na mensagem
 timeout {puts "Tempo excedido para o equipamento: $ip."; set equipamentoFalho "1"}
 
 ".*to host" {puts "Sem rota para o equipamento: $ip."; set equipamentoFalho "2"}
    
-"*refused*" {puts "Conex„o recusada pelo servidor $ip"; set equipamentoFalho "3"}
+"*refused*" {puts "Conex√£o recusada pelo servidor $ip"; set equipamentoFalho "3"}
 
-".*key.*failed.*" {puts "Conex„o ao servidor $ip falhou."; set equipamentoFalho "4"}
+".*key.*failed.*" {puts "Conex√£o ao servidor $ip falhou."; set equipamentoFalho "4"}
 
 "*yes/no*" {
 
@@ -114,7 +114,7 @@ file rename -force $caminho_log$nomeLog $caminho_log$equipamentoFalho-$nomeLog
 
 } else {
 
-puts "\rIP inv·lido ou comandos vazios/passados de forma incorreta. Favor verificar par‚metros passados e o ip."
+puts "\rIP inv√°lido ou comandos vazios/passados de forma incorreta. Favor verificar par√¢metros passados e o ip."
 
 }
 #fim do if que valida o ip
