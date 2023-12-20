@@ -193,7 +193,7 @@ puts "Logado com sucesso!"
 puts ""
 puts "Coletando as related rules...\r"
 
-set comandoRelateRule "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list RULE LOOKUPKEY NAME output csv\r"
+set comandoRelateRule "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list RULE LOOKUPKEY NAME output csv\r"
 set caminhoArquivoRRule [criaPastaData "/home/Documents/BKP_SRV/bkp_relate_rule"]
 append caminhoArquivoRRule "relate-$servidor"
 
@@ -210,7 +210,7 @@ expect eof
 log_file ;
 
 
-set comandoTemplate "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list TEMPLATE LOOKUPKEY  NAME  output csv\r"
+set comandoTemplate "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list TEMPLATE LOOKUPKEY  NAME  output csv\r"
 set caminhoArquivoTemplate [criaPastaData "/home/Documents/BKP_SRV/bkp_template"]
 append caminhoArquivoTemplate "template-$servidor"
 
@@ -225,7 +225,7 @@ expect eof
 log_file ;
 
 
-set comandoRule "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list SCOPE NAME IPFROM IPTO SUBNETMASK CRITERIA TEMPLATELOOKUPKEY DEFAULTGW LEASETIME DISABLED PARENTLOOKUPKEY output csv\r"
+set comandoRule "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list SCOPE NAME IPFROM IPTO SUBNETMASK CRITERIA TEMPLATELOOKUPKEY DEFAULTGW LEASETIME DISABLED PARENTLOOKUPKEY output csv\r"
 set caminhoRule [criaPastaData "/home/Documents/BKP_SRV/bkp_rule"]
 append caminhoRule "rule-$servidor"
 
@@ -240,7 +240,7 @@ expect eof
 log_file ;
 
 
-set comandoPrefix6 "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list PREFIXDELEGATIONRULEV6 NAME DESCRIPTION PREFIX PREFIXLENGTH DEFAULTPREFIXLENGTH PREFERREDLIFETIME VALIDLIFETIME CRITERIA RAPIDCOMMIT DISABLED output csv\r"
+set comandoPrefix6 "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list PREFIXDELEGATIONRULEV6 NAME DESCRIPTION PREFIX PREFIXLENGTH DEFAULTPREFIXLENGTH PREFERREDLIFETIME VALIDLIFETIME CRITERIA RAPIDCOMMIT DISABLED output csv\r"
 set caminhoPrefix6 [criaPastaData "/home/Documents/BKP_SRV/bkp_v6"]
 append caminhoPrefix6 "prefix6-$servidor"
 
@@ -255,7 +255,7 @@ expect eof
 log_file ;
 
 
-set comandoRule6 "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list RULEV6 NAME DESCRIPTION STARTIPADDRESS ENDIPADDRESS NONSEQUENTIAL PREFERREDLIFETIME VALIDLIFETIME CRITERIA RAPIDCOMMIT DISABLED output csv\r"
+set comandoRule6 "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list RULEV6 NAME DESCRIPTION STARTIPADDRESS ENDIPADDRESS NONSEQUENTIAL PREFERREDLIFETIME VALIDLIFETIME CRITERIA RAPIDCOMMIT DISABLED output csv\r"
 set caminhoRule6 [criaPastaData "/home/Documents/BKP_SRV/bkp_v6"]
 append caminhoRule6 "rule6-$servidor"
 
@@ -270,7 +270,7 @@ expect eof
 log_file ;
 
 
-set comandoRouting "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' list ROUTINGELEMENT NAME MANAGEMENTIP output csv\r"
+set comandoRouting "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' list ROUTINGELEMENT NAME MANAGEMENTIP output csv\r"
 set caminhoRouting [criaPastaData "/home/Documents/BKP_SRV/bkp_routing"]
 append caminhoRouting "routing-$servidor"
 
@@ -307,7 +307,7 @@ if {$cmtsValido != "NAME"} {
 puts "Coletando as routings de cada CMTS desse servidor...\r"
 puts "Coletando do CMTS $cmtsValido...\r"
 
-append comandoRCMTS "/usr/local/bin/ipcli -S $servidor -N Administrator -P 'AH1mqMdJ3Z6Rw4lPooZBcr' show ROUTINGELEMENT $cmtsValido\r"
+append comandoRCMTS "/usr/local/bin/ipcli -S $servidor -N Admin -P 'PASSWORD' show ROUTINGELEMENT $cmtsValido\r"
 append caminhoRCMTS [criaPastaData "/home/Documents/BKP_SRV/bkp_routing"]
 append caminhoRCMTS "routing-$servidor-$cmtsValido"
 
